@@ -345,7 +345,7 @@ const Hero = ({ onOpenModal }) => (
         </p>
         <div className="flex flex-wrap gap-4 mb-10">
           <button onClick={() => onOpenModal('demo')} className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold transition-all shadow-xl shadow-blue-900/30 flex items-center gap-2">
-            contact us <ChevronRight size={20} />
+            Contact Us <ChevronRight size={20} />
           </button>
         </div>
         <div className="flex items-center gap-3 text-slate-500 text-sm">
@@ -364,7 +364,7 @@ const Hero = ({ onOpenModal }) => (
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
           <img src="/assets/student_using_kit_v2.jpg" alt="Student using kit" className="relative rounded-3xl shadow-2xl border border-slate-700 group-hover:scale-[1.02] transition-transform duration-500" />
-        </div>
+        </div><br></br><br></br>
 
       </motion.div>
     </div>
@@ -402,7 +402,7 @@ const About = () => (
 
       <div className="grid md:grid-cols-[1fr_1.3fr] gap-12 items-center">
         <div className="space-y-6">
-          <div className="glass-card flex gap-5 p-6 border-l-4 border-l-blue-500">
+          {/* <div className="glass-card flex gap-5 p-6 border-l-4 border-l-blue-500">
             <div className="shrink-0 w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
               <Package className="text-blue-400" size={24} />
             </div>
@@ -410,8 +410,8 @@ const About = () => (
               <h4 className="text-lg font-bold mb-1">Complete Hardware Kit</h4>
               <p className="text-sm text-slate-400">Includes all sensors, actuators, breadboard, wires, connectors, and essential electronic components in one complete kit.</p>
             </div>
-          </div>
-          <div className="glass-card flex gap-5 p-6 border-l-4 border-l-purple-500">
+          </div> */}
+          {/* <div className="glass-card flex gap-5 p-6 border-l-4 border-l-purple-500">
             <div className="shrink-0 w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
               <BookOpen className="text-purple-400" size={24} />
             </div>
@@ -419,7 +419,7 @@ const About = () => (
               <h4 className="text-lg font-bold mb-1">Curriculum-Aligned Projects</h4>
               <p className="text-sm text-slate-400">Step-by-step guidance for 100+ experiments ranging from basic circuits to advanced robotics and IoT.</p>
             </div>
-          </div>
+          </div> */}
           <div className="glass-card flex gap-5 p-6 border-l-4 border-l-cyan-500">
             <div className="shrink-0 w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
               <Cpu className="text-cyan-400" size={24} />
@@ -717,7 +717,7 @@ const Footer = ({ onOpenModal }) => (
           <h2 className="text-4xl font-bold mb-6 leading-tight">Ready to transform hands-on learning?</h2>
           <p className="text-slate-500 mb-8 max-w-md">Our team reviews every demo request personally to ensure we bring the right configuration to your institution.</p>
           <button onClick={() => onOpenModal('demo')} className="px-10 py-5 bg-white text-black hover:bg-slate-200 rounded-2xl font-black transition-all shadow-xl active:scale-95">
-            contact us
+            Contact Us
           </button>
         </div>
 
