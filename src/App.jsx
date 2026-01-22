@@ -45,9 +45,9 @@ const Navbar = ({ onOpenModal }) => {
   const navLinks = [
     { name: 'Impact', target: 'need' },
     { name: 'Overview', target: 'about' },
-    { name: 'For Whom', target: 'users' },
+    { name: 'Users', target: 'users' },
     { name: 'Pricing', target: 'pricing' },
-    { name: 'FAQ', target: 'features' },
+    { name: 'FAQs', target: 'features' },
     { name: 'Contact us', target: 'contact' },
   ];
 
@@ -426,18 +426,15 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
 // --- Sections ---
 
 const Hero = ({ onOpenModal }) => (
+  // 1. INCREASED top padding (pt-32 -> pt-48) to create more space below the header
   <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-32 pb-20 relative overflow-hidden">
     {/* Glow Effects */}
     <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[120px] pointer-events-none"></div>
     <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[120px] pointer-events-none"></div>
 
-    {/* 1. Removed 'items-center': This allows the grid items to stretch to equal height (default behavior).
-      2. Both columns will now be the same height.
-    */}
     <div className="container grid grid-cols-1 md:grid-cols-2 gap-12">
       
       {/* Left Side: Text Content */}
-      {/* Added 'flex flex-col justify-center' to keep text centered vertically within its stretched container */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -454,8 +451,8 @@ const Hero = ({ onOpenModal }) => (
           </h1>
           
           <p className="mt-2 mb-6 text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 tracking-[0.2em]">
-  ONE LAB<span className="-ml-[0.2em]">.</span> INFINITE POSSIBILITIES<span className="-ml-[0.2em]">.</span>
-</p>
+            ONE LAB<span className="-ml-[0.2em]">.</span> INFINITE POSSIBILITIES<span className="-ml-[0.2em]">.</span>
+          </p>
         </div>
 
         <p className="mt-4 text-lg text-slate-400 mb-6 max-w-xl leading-relaxed">
@@ -479,7 +476,6 @@ const Hero = ({ onOpenModal }) => (
       </motion.div>
 
       {/* Right Side: Image */}
-      {/* Added 'md:h-full' to force the container to take full height on desktop */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -487,14 +483,9 @@ const Hero = ({ onOpenModal }) => (
         viewport={{ once: true }}
         className="relative md:h-full"
       >
-        {/* Added 'h-full' to the wrapper */}
         <div className="relative group md:h-full w-full">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
           
-          {/* Image Changes:
-             1. 'md:h-full': Forces image height to match the text column on desktop.
-             2. 'object-cover': Ensures image fills the height without stretching/distorting (it fits like a background image).
-          */}
           <img 
             src="/assets/student_using_kit_v2.jpg" 
             alt="Student using kit" 
@@ -505,7 +496,8 @@ const Hero = ({ onOpenModal }) => (
     </div>
 
     {/* Horizontal Strip */}
-    <div className="container mt-20">
+    {/* 2. REDUCED top margin (mt-20 -> mt-8) to pull slider closer to the hero section */}
+    <div className="container -mt-32 relative z-10">
       <div className="w-full mx-auto">
         <SpotlightCarousel
           speed={4000}
@@ -527,7 +519,7 @@ const About = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section id="about" className="section-padding bg-slate-900/30">
+    <section id="about" className="section-padding bg-slate-900/30 mt-20">
       <br></br>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -536,7 +528,6 @@ const About = () => {
             Gen-Alpha Portable Lab combines hardware, software, learning content, and accessories into one portable unit, removing the need for a traditional electronics lab setup.
           </p>
 
-          {/* Read More button */}
           <div className="mt-4">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
@@ -549,79 +540,61 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6">
-            {/* <div className="glass-card flex gap-5 p-6 border-l-4 border-l-blue-500">
-              <div className="shrink-0 w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                <Package className="text-blue-400" size={24} />
+          {/* LEFT SIDE: Static List of 4 Cards */}
+          <div className="space-y-2">
+            
+            {/* Card 1: Curriculum-Aligned */}
+            <div className="glass-card flex gap-3 p-3 border-l-4 border-l-emerald-500">
+              <div className="shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                <BookOpen className="text-emerald-400" size={16} />
               </div>
               <div>
-                <h4 className="text-lg font-bold mb-1">Complete Hardware Kit</h4>
-                <p className="text-sm text-slate-400">Includes all sensors, actuators, breadboard, wires, connectors, and essential electronic components in one complete kit.</p>
-              </div>
-            </div> */}
-            {/* <div className="glass-card flex gap-5 p-6 border-l-4 border-l-purple-500">
-              <div className="shrink-0 w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
-                <BookOpen className="text-purple-400" size={24} />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold mb-1">Curriculum-Aligned Projects</h4>
-                <p className="text-sm text-slate-400">Step-by-step guidance for 100+ experiments ranging from basic circuits to advanced robotics and IoT.</p>
-              </div>
-            </div> */}
-            <div className="glass-card flex gap-5 p-6 border-l-4 border-l-cyan-500">
-              <div className="shrink-0 w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                <Cpu className="text-cyan-400" size={24} />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold mb-1">Modular & Scalable</h4>
-                <p className="text-sm text-slate-400">A future-proof design that allows students to add new sensors and advanced modules as their skills progress.</p>
-              </div>
-            </div>
-            <div className="glass-card flex gap-5 p-6 border-l-4 border-l-blue-500">
-              <div className="shrink-0 w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                <Laptop className="text-blue-400" size={24} />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold mb-1">Portable Learning Studio</h4>
-                <p className="text-sm text-slate-400">Transform any desk into a high-tech innovation lab without requiring expensive, fixed infrastructure.</p>
-              </div>
-            </div>
-            <div className="glass-card flex gap-5 p-6 border-l-4 border-l-purple-500">
-              <div className="shrink-0 w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
-                <ShieldCheck className="text-purple-400" size={24} />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold mb-1">Safety First Design</h4>
-                <p className="text-sm text-slate-400">A pin-based, solder-free architecture ensures a safe and accessible learning environment for all ages.</p>
+                <h4 className="text-base font-bold mb-0.5">Curriculum-Aligned</h4>
+                <p className="text-xs text-slate-400 leading-snug">Step-by-step guidance for 100+ experiments ranging from basic circuits to advanced robotics and IoT.</p>
               </div>
             </div>
 
-            {/* Error-Detection - only shown when expanded */}
-            {isExpanded && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.3 }}
-                className="glass-card flex gap-5 p-6 border-l-4 border-l-yellow-500"
-              >
-                <div className="shrink-0 w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center">
-                  <ShieldCheck className="text-yellow-400" size={24} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold mb-1">Error-Detection & Guided Learning</h4>
-                  <p className="text-sm text-slate-400">Intelligent error-detection that helps students identify wiring or logic mistakes in real time.</p>
-                </div>
-              </motion.div>
-            )}
+            {/* Card 2: Modular & Scalable */}
+            <div className="glass-card flex gap-3 p-3 border-l-4 border-l-cyan-500">
+              <div className="shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                <Cpu className="text-cyan-400" size={16} />
+              </div>
+              <div>
+                <h4 className="text-base font-bold mb-0.5">Modular & Scalable</h4>
+                <p className="text-xs text-slate-400 leading-snug">A future-proof design that allows students to add new sensors and advanced modules as their skills progress.</p>
+              </div>
+            </div>
+
+            {/* Card 3: Portable Learning Studio */}
+            <div className="glass-card flex gap-3 p-3 border-l-4 border-l-blue-500">
+              <div className="shrink-0 w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                <Laptop className="text-blue-400" size={16} />
+              </div>
+              <div>
+                <h4 className="text-base font-bold mb-0.5">Portable Learning Studio</h4>
+                <p className="text-xs text-slate-400 leading-snug">Transform any desk into a high-tech innovation lab without requiring expensive, fixed infrastructure.</p>
+              </div>
+            </div>
+
+            {/* Card 4: Safety First Design */}
+            <div className="glass-card flex gap-3 p-3 border-l-4 border-l-purple-500">
+              <div className="shrink-0 w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                <ShieldCheck className="text-purple-400" size={16} />
+              </div>
+              <div>
+                <h4 className="text-base font-bold mb-0.5">Safety First Design</h4>
+                <p className="text-xs text-slate-400 leading-snug">A pin-based, solder-free architecture ensures a safe and accessible learning environment for all ages.</p>
+              </div>
+            </div>
+            
+            {/* REMOVED: Error Detection card from here */}
+
           </div>
 
-          {/* Right column - Image when collapsed, Expanded content when expanded */}
+          {/* RIGHT SIDE: Image or Expanded Content */}
           <div>
-            {/* Image - shown when not expanded */}
             {!isExpanded && <ImageSlider />}
 
-            {/* Expanded content - shown when expanded */}
             <AnimatePresence>
               {isExpanded && (
                 <motion.div
@@ -629,60 +602,76 @@ const About = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.4 }}
-                  className="space-y-6"
+                  className="space-y-2"
                 >
-                  {/* What's Inside */}
-                  <div>
-                    <h3 className="text-2xl font-bold mb-3 text-white">What's Inside the Gen-Alpha Portable Lab</h3>
-                    <p className="text-slate-400 mb-6">
+                  {/* Header Section */}
+                  <div className="mb-3 px-1">
+                    <h3 className="text-lg font-bold mb-1 text-white">What's Inside</h3>
+                    <p className="text-xs text-slate-400 leading-snug">
                       The lab integrates a complete electronics and computing stack in one platform, providing everything students need for comprehensive hands-on learning.
                     </p>
                   </div>
 
-                  {/* Core Electronics */}
-                  <div className="glass-card p-6 border-l-4 border-l-blue-500">
-                    <div className="flex gap-4 items-start">
-                      <div className="shrink-0 w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                        <Cpu className="text-blue-400" size={24} />
+                  {/* Card 1: Core Electronics */}
+                  <div className="glass-card p-3 border-l-4 border-l-blue-500">
+                    <div className="flex gap-3 items-start">
+                      <div className="shrink-0 w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                        <Cpu className="text-blue-400" size={16} />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">Core Electronics</h4>
-                        <p className="text-slate-400">
+                        <h4 className="text-sm font-bold mb-0.5 text-white">Core Electronics</h4>
+                        <p className="text-xs text-slate-400 leading-snug">
                           IC-555 timers, Arduino, Raspberry Pi, breadboards, digital multimeter/oscilloscope modules, and a wide range of sensors and actuators.
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Coding & IoT */}
-                  <div className="glass-card p-6 border-l-4 border-l-purple-500">
-                    <div className="flex gap-4 items-start">
-                      <div className="shrink-0 w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
-                        <Terminal className="text-purple-400" size={24} />
+                  {/* Card 2: Coding & IoT */}
+                  <div className="glass-card p-3 border-l-4 border-l-purple-500">
+                    <div className="flex gap-3 items-start">
+                      <div className="shrink-0 w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                        <Terminal className="text-purple-400" size={16} />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">Coding & IoT Capability</h4>
-                        <p className="text-slate-400">
+                        <h4 className="text-sm font-bold mb-0.5 text-white">Coding & IoT Capability</h4>
+                        <p className="text-xs text-slate-400 leading-snug">
                           Supports programming, IoT experiments, and mini web-server projects using a pre-configured Raspberry Pi environment.
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Why It Matters */}
-                  <div className="glass-card p-6 border-l-4 border-l-green-500">
-                    <div className="flex gap-4 items-start">
-                      <div className="shrink-0 w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center">
-                        <Zap className="text-green-400" size={24} />
+                  {/* Card 3: Why It Matters */}
+                  <div className="glass-card p-3 border-l-4 border-l-green-500">
+                    <div className="flex gap-3 items-start">
+                      <div className="shrink-0 w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center">
+                        <Zap className="text-green-400" size={16} />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">Why It Matters</h4>
-                        <p className="text-slate-400">
+                        <h4 className="text-sm font-bold mb-0.5 text-white">Why It Matters</h4>
+                        <p className="text-xs text-slate-400 leading-snug">
                           The Gen-Alpha Portable Lab replaces fragmented kits and expensive labs with a single, affordable, scalable solution for institutions, CSR programs, and educators.
                         </p>
                       </div>
                     </div>
                   </div>
+
+                  {/* ADDED: Error-Detection Card (Moved to Right Side) */}
+                  <div className="glass-card p-3 border-l-4 border-l-yellow-500">
+                    <div className="flex gap-3 items-start">
+                      <div className="shrink-0 w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center">
+                        <ShieldCheck className="text-yellow-400" size={16} />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold mb-0.5 text-white">Error-Detection & Guided Learning</h4>
+                        <p className="text-xs text-slate-400 leading-snug">
+                          Intelligent error-detection that helps students identify wiring or logic mistakes in real time.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
                 </motion.div>
               )}
             </AnimatePresence>
@@ -696,7 +685,7 @@ const About = () => {
 };
 
 const Statistics = () => (
-  <section id="need" className="section-padding">
+  <section id="need" className="section-padding -mt-24 relative z-20">
     <br></br>
     <div className="container">
 
@@ -747,7 +736,7 @@ const Statistics = () => (
         </p>
         </div>
       <div className="max-w-4xl mx-auto">
-        <h3 className="text-3xl font-black mb-6 text-white text-center">The Solution</h3>
+        <h3 className="text-3xl font-black mb-6 text-white text-center">Our Solution</h3>
         <div className="p-8 bg-blue-600/10 rounded-3xl border border-blue-500/20 text-center">
           <p className="text-slate-300 font-medium text-lg ">
             <span className="font-bold text-white ">Gen-Alpha Portable Lab</span> brings a full hands-on learning experience into one portable device, without requiring a dedicated lab room.
@@ -764,7 +753,7 @@ const TargetUsers = () => (
   <section id="users" className="section-padding bg-slate-900/20">
     <br></br>
     <div className="container">
-      <h2 className="section-title">Who is it for?</h2>
+      <h2 className="section-title">Who the Gen-Alpha Portable Lab Is Designed For?</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
         {[
@@ -810,14 +799,25 @@ const TargetUsers = () => (
             ]
           }
         ].map((card, i) => (
-          <div key={i} className="glass-card group hover:bg-blue-600/5 h-full">
-            <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-              {React.cloneElement(card.icon, { size: 24 })}
+          // CHANGED: Reduced padding from p-6 to p-5
+          <div key={i} className="glass-card group hover:bg-blue-600/5 h-full p-5">
+            
+            {/* CHANGED: Reduced gap from gap-4 to gap-3, margin-bottom from mb-6 to mb-4 */}
+            <div className="flex items-center gap-3 mb-4">
+              {/* CHANGED: Reduced size from w-12 h-12 to w-10 h-10 */}
+              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
+                {/* CHANGED: Reduced icon size from 24 to 20 */}
+                {React.cloneElement(card.icon, { size: 20 })}
+              </div>
+              {/* CHANGED: Reduced text size from text-xl to text-lg */}
+              <h4 className="text-lg font-bold">{card.title}</h4>
             </div>
-            <h4 className="text-xl font-bold mb-4">{card.title}</h4>
-            <ul className="space-y-3">
+
+            {/* CHANGED: Reduced vertical spacing from space-y-3 to space-y-2 */}
+            <ul className="space-y-2">
               {card.list.map((item, j) => (
-                <li key={j} className="flex items-start gap-2 text-sm text-slate-400">
+                // CHANGED: Reduced text size from text-sm to text-xs
+                <li key={j} className="flex items-start gap-2 text-xs text-slate-400 leading-relaxed">
                   <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></div>
                   {item}
                 </li>
@@ -834,31 +834,122 @@ const TargetUsers = () => (
 
 const Features = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   const faqData = [
-    { q: "What components are included in the kit?", a: "The kit includes all necessary sensors, actuators, breadboards, wires, and connectors required to perform 100+ electronics experiments." },
-    { q: "Does it support coding and IoT learning?", a: "Yes. Students advance from basic circuit building to microcontroller programming and real-world IoT applications on a single platform." },
-    { q: "Is guided learning content provided?", a: "Every kit includes built-in video lectures and step-by-step experiment guides to ensure students can learn independently." },
-    { q: "Can the kit be expanded with new modules?", a: "Absolutely. The modular design allows for future expansions, enabling students to add advanced sensors as their expertise grows." },
-    { q: "Is the design safe for younger students?", a: "Yes. The lab uses a pin-based, solder-free architecture that eliminates risks while maintaining a professional electronics build experience." },
-    { q: "How is the learning progress measured?", a: "The system provides an intuitive interface for students to follow their curriculum path and master core engineering concepts through practical work." },
+    {
+      q: "What components are included in the kit?",
+      a: "The kit includes all essential electronics components, sensors, wires, connectors, and interface modules required to perform the listed experiments. Students do not need to purchase any additional parts to start learning."
+    },
+    {
+      q: "Does it support coding and IoT learning?",
+      a: "Yes. Students learn coding using microcontrollers and computing platforms such as Arduino and Raspberry Pi. Advanced configurations support IoT projects such as sensor monitoring, data transmission, and web-based applications."
+    },
+    {
+      q: "Is guided learning content provided?",
+      a: "Yes. The system includes in-built video lectures that explain electronics concepts and guide students step-by-step through more than 100 experiments. Students can watch, build, and test within the same system."
+    },
+    {
+      q: "Can the kit be expanded with new modules?",
+      a: "Yes. The lab is designed with extra storage space for additional sensors, wires, and future expansion modules. Institutions can add new components as their curriculum grows."
+    },
+    {
+      q: "Is the design safe for younger students?",
+      a: "Yes. The kit uses a pin-based, solder-free design, reducing electrical and physical risk. All components operate at low, student-safe voltages suitable for classroom use."
+    },
+    {
+      q: "How is student learning progress measured?",
+      a: (
+        <div>
+          Learning progress is tracked through:
+          <ul className="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+            <li>Completion of guided experiments</li>
+            <li>Ability to build and modify circuits independently</li>
+            <li>Project-based assessments conducted by teachers</li>
+          </ul>
+          <p className="mt-2">Institutions can integrate the lab into existing internal assessment methods.</p>
+        </div>
+      )
+    },
+    {
+      q: "Does the lab require a full electronics classroom setup?",
+      a: "No. The Gen-Alpha Portable Lab works as a self-contained system and can be used in regular classrooms, labs, or mobile learning setups."
+    },
+    {
+      q: "Is internet required to use the lab?",
+      a: "Basic experiments and video lessons can be used without continuous internet. Internet is only required for certain IoT or cloud-based projects and for updates."
+    },
+    {
+      q: "How many students can use one kit?",
+      a: (
+        <div>
+          One kit can be used by:
+          <ul className="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+            <li>Individual students for personal learning, or</li>
+            <li>Small groups of 3–5 students in classroom settings, using rotation or lab sessions.</li>
+          </ul>
+          <p className="mt-2">Multiple kits can be deployed for larger batches.</p>
+        </div>
+      )
+    },
+    {
+      q: "Can teachers use this without advanced technical training?",
+      a: "Yes. The guided experiment structure and video lessons make it easy for teachers to facilitate sessions even if they are not electronics specialists. Optional teacher training is also available."
+    },
+    {
+      q: "Is teacher training provided?",
+      a: "Yes, if required. We offer onboarding sessions and training programs to help teachers understand how to conduct experiments and manage classroom usage."
+    },
+    {
+      q: "Does the kit align with school or college curriculum?",
+      a: "Yes. The experiments are designed to support common electronics, physics, and embedded systems topics taught in Indian school boards and engineering syllabi. Customization is possible for institutional needs."
+    },
+    {
+      q: "What kind of maintenance does the kit require?",
+      a: "The kit is designed for classroom durability and requires minimal maintenance. Annual maintenance and support plans are available for institutions that prefer ongoing technical assistance."
+    },
+    {
+      q: "Can it be used for competitions and innovation projects?",
+      a: "Yes. Students can use the kit to build custom projects for science fairs, robotics competitions, hackathons, and innovation challenges."
+    },
+    {
+      q: "Is this suitable for rural or low-infrastructure schools?",
+      a: "Yes. The system is portable, does not require permanent lab installations, and can function in environments with limited infrastructure. This makes it suitable for government and CSR education programs."
+    },
+    {
+      q: "How do we decide which configuration is right for us?",
+      a: (
+        <div>
+          After you submit the demo or enquiry form, our team reviews:
+          <ul className="list-disc pl-5 mt-2 space-y-1 text-slate-400">
+            <li>Student age group</li>
+            <li>Number of learners</li>
+            <li>Intended usage</li>
+            <li>Infrastructure availability</li>
+          </ul>
+        </div>
+      )
+    }
   ];
+
+  // Logic to show only first 5 or all based on state
+  const visibleFaqs = showAll ? faqData : faqData.slice(0, 5);
 
   return (
     <section id="features" className="section-padding">
       <br></br>
       <div className="container">
-        <h2 className="section-title">FAQ's</h2>
+        <h2 className="section-title">FAQs</h2>
 
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqData.map((item, i) => (
+          {visibleFaqs.map((item, i) => (
             <div key={i} className="border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-colors bg-slate-900/20">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-800/20 transition-colors"
               >
-                <span className="font-bold text-slate-200">{item.q}</span>
-                <ChevronDown className={`text-blue-500 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} size={20} />
+                <span className="font-bold text-slate-200 pr-8">{item.q}</span>
+                <ChevronDown className={`text-blue-500 shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} size={20} />
               </button>
 
               <AnimatePresence>
@@ -869,7 +960,7 @@ const Features = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-6 pb-6 text-slate-400 text-sm border-t border-slate-800/50 pt-4">
+                    <div className="px-6 pb-6 text-slate-400 text-sm border-t border-slate-800/50 pt-4 leading-relaxed">
                       {item.a}
                     </div>
                   </motion.div>
@@ -877,6 +968,18 @@ const Features = () => {
               </AnimatePresence>
             </div>
           ))}
+
+          {/* Read More / Read Less Button */}
+          <div className="pt-4 flex justify-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="text-blue-400 hover:text-blue-300 font-semibold transition-colors inline-flex items-center gap-2"
+            >
+              {showAll ? 'Read Less Questions' : 'Read More Questions'}
+              <ChevronDown size={18} className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
+          
         </div>
       </div>
       <br></br>
@@ -919,55 +1022,125 @@ const HowItWorks = () => (
   </section>
 );
 
-const Pricing = ({ onOpenModal }) => (
-  <section id="pricing" className="section-padding">
-    <br></br>
-    <div className="container">
-      <div className="text-center max-w-2xl mx-auto mb-16">
-        <h2 className="section-title">Pricing</h2>
-        <p className="text-slate-400">Pricing depends on configuration and usage needs. Final pricing is shared after understanding your specific requirements.</p>
+const Pricing = ({ onOpenModal }) => {
+  const plans = [
+    {
+      name: "Starter",
+      price: "₹1,00,000",
+      approx: "approx.",
+      subtitle: "Best for middle school and early high school",
+      features: [
+        "Core electronics (resistors, IC 555, logic)",
+        "Breadboard-based, solder-free wiring",
+        "11.2\" tablet with guided steps",
+        "40+ structured beginner experiments",
+        "Built-in video lessons for fundamentals"
+      ],
+      suited: ["Class 6 to 10 practical learning", "STEM clubs & introductory labs"]
+    },
+    {
+      name: "Standard",
+      price: "₹1,50,000",
+      approx: "approx.",
+      subtitle: "Best for schools and diploma programs",
+      isPopular: true,
+      features: [
+        "Everything in Starter, plus:",
+        "Arduino-based microcontroller platform",
+        "Expanded sensor set (temp, light, motion)",
+        "70+ guided experiments (Basics to Inter.)",
+        "Coding and logic-based projects"
+      ],
+      suited: ["High schools & diploma institutions", "Electronics and robotics labs"]
+    },
+    {
+      name: "Advanced",
+      price: "₹1.5L - 2.0L",
+      approx: "",
+      subtitle: "Best for colleges and engineering depts",
+      features: [
+        "Everything in Standard, plus:",
+        "Raspberry Pi computing platform",
+        "IoT and web-based project capabilities",
+        "100+ experiments (Electronics, Coding, IoT)",
+        "Ready for final-year projects"
+      ],
+      suited: ["Engineering colleges & universities", "Innovation labs & incubation centers"]
+    }
+  ];
+
+  return (
+    <section id="pricing" className="section-padding">
+      <br></br>
+      <div className="container">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <h2 className="section-title">Pricing</h2>
+          <p className="text-slate-400">Pricing depends on configuration and usage needs. Final pricing is shared after understanding your specific requirements.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {plans.map((plan, index) => (
+            <div 
+              key={index} 
+              className={`glass-card p-8 flex flex-col relative ${plan.isPopular ? 'border-blue-500/50 shadow-blue-900/10 scale-105 z-10' : ''}`}
+            >
+              {plan.isPopular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-blue-600 rounded-full text-[10px] uppercase font-black tracking-widest leading-none shadow-lg shadow-blue-900/40">
+                  Most Popular
+                </div>
+              )}
+
+              <h4 className="text-2xl font-bold mb-1">{plan.name}</h4>
+              <p className="text-xs text-blue-400 font-medium mb-4 uppercase tracking-wide">{plan.subtitle}</p>
+              
+              <div className="text-3xl font-bold mb-6">
+                {plan.price}
+                <span className="text-sm font-normal text-slate-500 ml-1">{plan.approx}</span>
+              </div>
+
+              <div className="flex-grow mb-8">
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">What's Included</p>
+                <ul className="space-y-3 mb-6">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="text-sm text-slate-300 flex items-start gap-2 leading-snug">
+                      <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${feature.includes("Everything") ? "text-purple-400" : "text-blue-500"}`} />
+                      <span className={feature.includes("Everything") ? "font-semibold text-white" : ""}>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Best Suited For</p>
+                  <ul className="space-y-1.5">
+                    {plan.suited.map((item, j) => (
+                       <li key={j} className="text-xs text-slate-400 flex items-center gap-2">
+                         <div className="w-1 h-1 rounded-full bg-slate-500"></div>
+                         {item}
+                       </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <button 
+                onClick={() => onOpenModal('quote')} 
+                className={`w-full py-3 rounded-xl font-bold transition-all ${
+                  plan.isPopular 
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20 active:scale-[0.98]' 
+                    : 'border border-slate-700 hover:bg-slate-800 text-slate-300'
+                }`}
+              >
+                Request Details
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="glass-card p-10 flex flex-col">
-          <h4 className="text-xl font-bold mb-2">Starter</h4>
-          <div className="text-3xl font-bold mb-6">₹1,00,000<span className="text-sm font-normal text-slate-500"> approx.</span></div>
-          <ul className="space-y-4 mb-10 flex-grow">
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Middle School Level</li>
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Core Electronics</li>
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Essential Sensors</li>
-          </ul>
-          <button onClick={() => onOpenModal('quote')} className="w-full py-3 border border-slate-700 rounded-xl font-bold hover:bg-slate-800 transition-all">Request Details</button>
-        </div>
-
-        <div className="glass-card p-10 flex flex-col relative border-blue-500/50 shadow-blue-900/10 scale-105 z-10">
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-blue-600 rounded-full text-[10px] uppercase font-black tracking-widest leading-none shadow-lg shadow-blue-900/40">Most Popular</div>
-          <h4 className="text-xl font-bold mb-2">Standard</h4>
-          <div className="text-3xl font-bold mb-6">₹1,50,000<span className="text-sm font-normal text-slate-500"> approx.</span></div>
-          <ul className="space-y-4 mb-10 flex-grow text-left">
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Schools & High Schools</li>
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Advanced Modules & IoT</li>
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Training Included</li>
-          </ul>
-          <button onClick={() => onOpenModal('quote')} className="w-full py-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/20 active:scale-[0.98]">Request Details</button>
-        </div>
-
-        <div className="glass-card p-10 flex flex-col">
-          <h4 className="text-xl font-bold mb-2">Advanced</h4>
-          <div className="text-3xl font-bold mb-6">₹2,00,000<span className="text-sm font-normal text-slate-500"> max.</span></div>
-          <ul className="space-y-4 mb-10 flex-grow">
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Engineering Departments</li>
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Full Industrial Sensors</li>
-            <li className="text-sm text-slate-400 flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Priority Support</li>
-          </ul>
-          <button onClick={() => onOpenModal('quote')} className="w-full py-3 border border-slate-700 rounded-xl font-bold hover:bg-slate-800 transition-all">Request Details</button>
-        </div>
-      </div>
-    </div>
-    <br></br>
-    <br></br>
-  </section>
-);
+      <br></br>
+      <br></br>
+    </section>
+  );
+};
 
 const Footer = () => (
   <footer id="contact" className="py-10 bg-black text-white border-t border-slate-900">
