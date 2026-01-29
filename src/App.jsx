@@ -63,8 +63,8 @@ const Navbar = ({ onOpenModal }) => {
           </span>
 
           <p className="text-[10px] font-bold uppercase tracking-[0.55em] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
-  One Lab<span className="-ml-[0.55em]">.</span> Infinite Possibilities<span className="-ml-[0.55em]">.</span>
-</p>
+            One Lab<span className="-ml-[0.55em]">.</span> Infinite Possibilities<span className="-ml-[0.55em]">.</span>
+          </p>
         </div>
 
         {/* Desktop Nav */}
@@ -248,7 +248,7 @@ const ImageModal = ({ isOpen, onClose, imageData }) => {
           <X size={20} />
         </button>
 
-        <img src={imageData.src} alt={imageData.title} className="w-full h-64 object-cover" />
+        <img src={imageData.src} alt={imageData.title} className="w-full h-auto max-h-[70vh] object-contain" />
 
         <div className="p-8">
           <h3 className="text-2xl font-bold mb-3 text-blue-400">{imageData.title}</h3>
@@ -332,12 +332,12 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
 
   return (
     <div className="relative w-full py-16 px-4 group">
-      
+
       {/* Carousel Container */}
       <div className="relative h-[300px] md:h-[420px] flex items-center justify-center">
-        
+
         {/* Left Button */}
-        <button 
+        <button
           onClick={prevSlide}
           className="absolute left-0 md:left-10 z-50 p-3 bg-slate-900/50 hover:bg-blue-600 text-white rounded-full backdrop-blur-md transition-all border border-slate-700 hover:border-blue-500 shadow-lg active:scale-90"
         >
@@ -345,7 +345,7 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
         </button>
 
         {/* Right Button */}
-        <button 
+        <button
           onClick={nextSlide}
           className="absolute right-0 md:right-10 z-50 p-3 bg-slate-900/50 hover:bg-blue-600 text-white rounded-full backdrop-blur-md transition-all border border-slate-700 hover:border-blue-500 shadow-lg active:scale-90"
         >
@@ -363,7 +363,7 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
             const isSide = Math.abs(offset) === 1;
 
             // Don't render cards that are far off-screen to save resources
-            if (Math.abs(offset) > 2) return null; 
+            if (Math.abs(offset) > 2) return null;
 
             return (
               <motion.div
@@ -383,8 +383,8 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
                 }}
                 className="absolute w-[260px] md:w-[500px] aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl cursor-pointer bg-slate-900 will-change-transform"
                 onClick={() => {
-                    if (offset === 1) nextSlide();
-                    if (offset === -1) prevSlide();
+                  if (offset === 1) nextSlide();
+                  if (offset === -1) prevSlide();
                 }}
               >
                 <img
@@ -409,10 +409,10 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
                 </motion.div>
 
                 {/* Active Glow Border */}
-                <motion.div 
-                    animate={{ opacity: isActive ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 border-2 border-blue-500/50 rounded-[32px] pointer-events-none" 
+                <motion.div
+                  animate={{ opacity: isActive ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 border-2 border-blue-500/50 rounded-[32px] pointer-events-none"
                 />
               </motion.div>
             );
@@ -432,15 +432,15 @@ const Hero = ({ onOpenModal }) => (
     <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[120px] pointer-events-none"></div>
     <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[120px] pointer-events-none"></div>
 
-    <div className="container grid grid-cols-1 md:grid-cols-2 gap-12">
-      
+    <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12">
+
       {/* Left Side: Text Content */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="flex flex-col justify-center" 
+        className="flex flex-col justify-center"
       >
         <div className="inline-block">
           <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
@@ -449,7 +449,7 @@ const Hero = ({ onOpenModal }) => (
               Portable Lab
             </span>
           </h1>
-          
+
           <p className="mt-2 mb-6 text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 tracking-[0.2em]">
             ONE LAB<span className="-ml-[0.2em]">.</span> INFINITE POSSIBILITIES<span className="-ml-[0.2em]">.</span>
           </p>
@@ -481,15 +481,15 @@ const Hero = ({ onOpenModal }) => (
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="relative md:h-full"
+        className="relative lg:h-full"
       >
         <div className="relative group md:h-full w-full">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-          
-          <img 
-            src="/assets/student_using_kit_v2.jpg" 
-            alt="Student using kit" 
-            className="relative w-full md:h-full object-cover rounded-3xl shadow-2xl border border-slate-700 group-hover:scale-[1.005] transition-transform duration-500" 
+
+          <img
+            src="/assets/student_using_kit_v2.jpg"
+            alt="Student using kit"
+            className="relative w-full lg:h-full h-auto max-h-[70vh] lg:max-h-full object-contain lg:object-cover rounded-3xl shadow-2xl border border-slate-700 group-hover:scale-[1.005] transition-transform duration-500"
           />
         </div>
       </motion.div>
@@ -539,10 +539,10 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* LEFT SIDE: Static List of 4 Cards */}
           <div className="space-y-2">
-            
+
             {/* Card 1: Curriculum-Aligned */}
             <div className="glass-card flex gap-3 p-3 border-l-4 border-l-emerald-500">
               <div className="shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
@@ -586,7 +586,7 @@ const About = () => {
                 <p className="text-xs text-slate-400 leading-snug">A pin-based, solder-free architecture ensures a safe and accessible learning environment for all ages.</p>
               </div>
             </div>
-            
+
             {/* REMOVED: Error Detection card from here */}
 
           </div>
@@ -731,10 +731,10 @@ const Statistics = () => (
         </div>
       </div>
       <div className="text-center max-w-3xl mx-auto mb-16">
-<p className="text-xl text-slate-400 leading-relaxed">
+        <p className="text-xl text-slate-400 leading-relaxed">
           Most students learn electronics through theory and diagrams. Hands-on exposure remains limited due to lack of lab infrastructure.
         </p>
-        </div>
+      </div>
       <div className="max-w-4xl mx-auto">
         <h3 className="text-3xl font-black mb-6 text-white text-center">Our Solution</h3>
         <div className="p-8 bg-blue-600/10 rounded-3xl border border-blue-500/20 text-center">
@@ -755,7 +755,7 @@ const TargetUsers = () => (
     <div className="container">
       <h2 className="section-title">Who the Gen-Alpha Portable Lab Is Designed For?</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {[
           {
             icon: <GraduationCap />,
@@ -801,7 +801,7 @@ const TargetUsers = () => (
         ].map((card, i) => (
           // CHANGED: Reduced padding from p-6 to p-5
           <div key={i} className="glass-card group hover:bg-blue-600/5 h-full p-5">
-            
+
             {/* CHANGED: Reduced gap from gap-4 to gap-3, margin-bottom from mb-6 to mb-4 */}
             <div className="flex items-center gap-3 mb-4">
               {/* CHANGED: Reduced size from w-12 h-12 to w-10 h-10 */}
@@ -979,7 +979,7 @@ const Features = () => {
               <ChevronDown size={18} className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} />
             </button>
           </div>
-          
+
         </div>
       </div>
       <br></br>
@@ -1078,10 +1078,10 @@ const Pricing = ({ onOpenModal }) => {
           <p className="text-slate-400">Pricing depends on configuration and usage needs. Final pricing is shared after understanding your specific requirements.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`glass-card p-8 flex flex-col relative ${plan.isPopular ? 'border-blue-500/50 shadow-blue-900/10 scale-105 z-10' : ''}`}
             >
               {plan.isPopular && (
@@ -1092,7 +1092,7 @@ const Pricing = ({ onOpenModal }) => {
 
               <h4 className="text-2xl font-bold mb-1">{plan.name}</h4>
               <p className="text-xs text-blue-400 font-medium mb-4 uppercase tracking-wide">{plan.subtitle}</p>
-              
+
               <div className="text-3xl font-bold mb-6">
                 {plan.price}
                 <span className="text-sm font-normal text-slate-500 ml-1">{plan.approx}</span>
@@ -1113,22 +1113,21 @@ const Pricing = ({ onOpenModal }) => {
                   <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Best Suited For</p>
                   <ul className="space-y-1.5">
                     {plan.suited.map((item, j) => (
-                       <li key={j} className="text-xs text-slate-400 flex items-center gap-2">
-                         <div className="w-1 h-1 rounded-full bg-slate-500"></div>
-                         {item}
-                       </li>
+                      <li key={j} className="text-xs text-slate-400 flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-full bg-slate-500"></div>
+                        {item}
+                      </li>
                     ))}
                   </ul>
                 </div>
               </div>
 
-              <button 
-                onClick={() => onOpenModal('quote')} 
-                className={`w-full py-3 rounded-xl font-bold transition-all ${
-                  plan.isPopular 
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20 active:scale-[0.98]' 
-                    : 'border border-slate-700 hover:bg-slate-800 text-slate-300'
-                }`}
+              <button
+                onClick={() => onOpenModal('quote')}
+                className={`w-full py-3 rounded-xl font-bold transition-all ${plan.isPopular
+                  ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20 active:scale-[0.98]'
+                  : 'border border-slate-700 hover:bg-slate-800 text-slate-300'
+                  }`}
               >
                 Request Details
               </button>
