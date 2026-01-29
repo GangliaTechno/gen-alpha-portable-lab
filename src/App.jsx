@@ -427,12 +427,12 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
 
 const Hero = ({ onOpenModal }) => (
   // 1. INCREASED top padding (pt-32 -> pt-48) to create more space below the header
-  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-32 pb-20 relative overflow-hidden">
+  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-28 pb-10 sm:pt-32 sm:pb-20 relative overflow-hidden">
     {/* Glow Effects */}
     <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[120px] pointer-events-none"></div>
     <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[120px] pointer-events-none"></div>
 
-    <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
 
       {/* Left Side: Text Content */}
       <motion.div
@@ -450,22 +450,22 @@ const Hero = ({ onOpenModal }) => (
             </span>
           </h1>
 
-          <p className="mt-2 mb-6 text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 tracking-[0.2em]">
+          <p className="mt-1 mb-3 sm:mt-2 sm:mb-6 text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 tracking-[0.2em]">
             ONE LAB<span className="-ml-[0.2em]">.</span> INFINITE POSSIBILITIES<span className="-ml-[0.2em]">.</span>
           </p>
         </div>
 
-        <p className="mt-4 text-lg text-slate-400 mb-6 max-w-xl leading-relaxed">
+        <p className="mt-2 text-lg text-slate-400 mb-3 sm:mt-4 sm:mb-6 max-w-xl leading-relaxed">
           An all-in-one Electronics learning kit and portable lab for students from Class 6 to Engineering 2nd year.
           Students learn electronics, coding, and IoT by building real circuits.
         </p>
 
-        <div className="flex items-center gap-3 text-slate-500 text-sm font-medium mb-8">
+        <div className="flex items-center gap-3 text-slate-500 text-sm font-medium mb-4 sm:mb-8">
           <Package size={18} className="text-blue-500" />
           <span>Includes all required sensors, wires, and components.</span>
         </div>
 
-        <div className="flex flex-wrap gap-4 mb-2">
+        <div className="flex flex-wrap gap-2 sm:gap-4 mb-2">
           <button
             onClick={() => onOpenModal('demo')}
             className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-base transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2"
@@ -519,7 +519,7 @@ const About = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section id="about" className="section-padding bg-slate-900/30 mt-20">
+    <section id="about" className="section-padding bg-slate-900/30 mt-10 sm:mt-20">
       <br></br>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
