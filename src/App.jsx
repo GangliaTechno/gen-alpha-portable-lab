@@ -331,10 +331,10 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
   }, [speed, images.length]);
 
   return (
-    <div className="relative w-full py-16 px-4 group">
+    <div className="relative w-full py-4 sm:py-16 px-4 group">
 
       {/* Carousel Container */}
-      <div className="relative h-[300px] md:h-[420px] flex items-center justify-center">
+      <div className="relative h-[220px] md:h-[420px] flex items-center justify-center">
 
         {/* Left Button */}
         <button
@@ -427,7 +427,7 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
 
 const Hero = ({ onOpenModal }) => (
   // 1. INCREASED top padding (pt-32 -> pt-48) to create more space below the header
-  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-28 pb-10 sm:pt-32 sm:pb-20 relative overflow-hidden">
+  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-20 pb-8 sm:pt-32 sm:pb-20 relative overflow-hidden">
     {/* Glow Effects */}
     <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[120px] pointer-events-none"></div>
     <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[120px] pointer-events-none"></div>
@@ -519,8 +519,7 @@ const About = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section id="about" className="section-padding bg-slate-900/30 mt-10 sm:mt-20">
-      <br></br>
+    <section id="about" className="py-6 sm:py-12 bg-slate-900/30 mt-6 sm:mt-20">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="section-title">Overview</h2>
@@ -678,22 +677,19 @@ const About = () => {
           </div>
         </div>
       </div>
-      <br></br>
-      <br></br>
-    </section>
+    </section >
   );
 };
 
 const Statistics = () => (
-  <section id="need" className="section-padding -mt-24 relative z-20">
-    <br></br>
+  <section id="need" className="py-6 sm:py-12 -mt-24 relative z-20">
     <div className="container">
 
-      <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
         <h2 className="section-title">Problems with current system?</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8 sm:mb-16">
         {/* Card 1 */}
         <div className="glass-card text-center p-6 border-b-4 border-b-red-600/50">
           <div className="text-4xl font-black text-red-500 mb-3">
@@ -730,7 +726,7 @@ const Statistics = () => (
           <p className="text-sm text-slate-400">Most schools lack the space for dedicated high-end electronics labs.</p>
         </div>
       </div>
-      <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
         <p className="text-xl text-slate-400 leading-relaxed">
           Most students learn electronics through theory and diagrams. Hands-on exposure remains limited due to lack of lab infrastructure.
         </p>
@@ -744,14 +740,11 @@ const Statistics = () => (
         </div>
       </div>
     </div>
-    <br></br>
-    <br></br>
   </section >
 );
 
 const TargetUsers = () => (
-  <section id="users" className="section-padding bg-slate-900/20">
-    <br></br>
+  <section id="users" className="py-6 sm:py-12 bg-slate-900/20">
     <div className="container">
       <h2 className="section-title">Who the Gen-Alpha Portable Lab Is Designed For?</h2>
 
@@ -827,9 +820,7 @@ const TargetUsers = () => (
         ))}
       </div>
     </div>
-    <br></br>
-    <br></br>
-  </section>
+  </section >
 );
 
 const Features = () => {
@@ -936,8 +927,7 @@ const Features = () => {
   const visibleFaqs = showAll ? faqData : faqData.slice(0, 5);
 
   return (
-    <section id="features" className="section-padding">
-      <br></br>
+    <section id="features" className="py-6 sm:py-12">
       <div className="container">
         <h2 className="section-title">FAQs</h2>
 
@@ -982,19 +972,16 @@ const Features = () => {
 
         </div>
       </div>
-      <br></br>
-      <br></br>
-    </section>
+    </section >
   );
 };
 
 const HowItWorks = () => (
-  <section className="section-padding bg-slate-900/40 relative">
-    <br></br>
+  <section className="py-6 sm:py-12 bg-slate-900/40 relative">
     <div className="container">
       <h2 className="section-title">How does a student use the lab?</h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 relative">
         {/* Connector Line (Desktop) */}
         <div className="hidden lg:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-cyan-500/50 -translate-y-1/2 z-0"></div>
 
@@ -1017,9 +1004,7 @@ const HowItWorks = () => (
         <p className="text-slate-400 italic">Students can repeat, modify, and extend experiments independently.</p>
       </div>
     </div>
-    <br></br>
-    <br></br>
-  </section>
+  </section >
 );
 
 const Pricing = ({ onOpenModal }) => {
@@ -1070,19 +1055,18 @@ const Pricing = ({ onOpenModal }) => {
   ];
 
   return (
-    <section id="pricing" className="section-padding">
-      <br></br>
+    <section id="pricing" className="py-6 sm:py-12">
       <div className="container">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
           <h2 className="section-title">Pricing</h2>
           <p className="text-slate-400">Pricing depends on configuration and usage needs. Final pricing is shared after understanding your specific requirements.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`glass-card p-8 flex flex-col relative ${plan.isPopular ? 'border-blue-500/50 shadow-blue-900/10 scale-105 z-10' : ''}`}
+              className={`glass-card p-4 sm:p-8 flex flex-col relative ${plan.isPopular ? 'border-blue-500/50 shadow-blue-900/10 sm:scale-105 z-10' : ''}`}
             >
               {plan.isPopular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-blue-600 rounded-full text-[10px] uppercase font-black tracking-widest leading-none shadow-lg shadow-blue-900/40">
@@ -1090,28 +1074,28 @@ const Pricing = ({ onOpenModal }) => {
                 </div>
               )}
 
-              <h4 className="text-2xl font-bold mb-1">{plan.name}</h4>
-              <p className="text-xs text-blue-400 font-medium mb-4 uppercase tracking-wide">{plan.subtitle}</p>
+              <h4 className="text-xl sm:text-2xl font-bold mb-1">{plan.name}</h4>
+              <p className="text-xs text-blue-400 font-medium mb-1 sm:mb-4 uppercase tracking-wide">{plan.subtitle}</p>
 
-              <div className="text-3xl font-bold mb-6">
+              <div className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-6">
                 {plan.price}
                 <span className="text-sm font-normal text-slate-500 ml-1">{plan.approx}</span>
               </div>
 
-              <div className="flex-grow mb-8">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">What's Included</p>
-                <ul className="space-y-3 mb-6">
+              <div className="flex-grow mb-4 sm:mb-8">
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 sm:mb-3">What's Included</p>
+                <ul className="space-y-1 sm:space-y-3 mb-3 sm:mb-6">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="text-sm text-slate-300 flex items-start gap-2 leading-snug">
+                    <li key={i} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2 leading-snug">
                       <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${feature.includes("Everything") ? "text-purple-400" : "text-blue-500"}`} />
                       <span className={feature.includes("Everything") ? "font-semibold text-white" : ""}>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Best Suited For</p>
-                  <ul className="space-y-1.5">
+                <div className="bg-slate-800/50 rounded-xl p-2 sm:p-4 border border-slate-700/50">
+                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1 sm:mb-2">Best Suited For</p>
+                  <ul className="space-y-1">
                     {plan.suited.map((item, j) => (
                       <li key={j} className="text-xs text-slate-400 flex items-center gap-2">
                         <div className="w-1 h-1 rounded-full bg-slate-500"></div>
@@ -1124,7 +1108,7 @@ const Pricing = ({ onOpenModal }) => {
 
               <button
                 onClick={() => onOpenModal('quote')}
-                className={`w-full py-3 rounded-xl font-bold transition-all ${plan.isPopular
+                className={`w-full py-2 sm:py-3 rounded-xl font-bold transition-all ${plan.isPopular
                   ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/20 active:scale-[0.98]'
                   : 'border border-slate-700 hover:bg-slate-800 text-slate-300'
                   }`}
@@ -1135,17 +1119,15 @@ const Pricing = ({ onOpenModal }) => {
           ))}
         </div>
       </div>
-      <br></br>
-      <br></br>
-    </section>
+    </section >
   );
 };
 
 const Footer = () => (
-  <footer id="contact" className="py-10 bg-black text-white border-t border-slate-900">
+  <footer id="contact" className="py-8 sm:py-10 bg-black text-white border-t border-slate-900">
     <div className="container">
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-6 md:mb-10">
         {/* Column 1: Logo */}
         <div className="space-y-4">
           <div className="flex flex-col">
