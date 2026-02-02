@@ -427,7 +427,7 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
 
 const Hero = ({ onOpenModal }) => (
   // 1. INCREASED top padding (pt-32 -> pt-48) to create more space below the header
-  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-20 pb-8 sm:pt-32 sm:pb-20 relative overflow-hidden">
+  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-24 pb-8 sm:pt-32 sm:pb-20 relative overflow-hidden">
     {/* Glow Effects */}
     <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[120px] pointer-events-none"></div>
     <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[120px] pointer-events-none"></div>
@@ -682,7 +682,9 @@ const About = () => {
 };
 
 const Statistics = () => (
+
   <section id="need" className="py-6 sm:py-12 -mt-24 relative z-20">
+    <br></br>
     <div className="container">
 
       <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
