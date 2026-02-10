@@ -35,11 +35,24 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 const Navbar = ({ onOpenModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [remSize, setRemSize] = useState(16);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
+
+    const updateRem = () => {
+      const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      setRemSize(fontSize || 16);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', updateRem);
+    updateRem();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateRem);
+    };
   }, []);
 
   const navLinks = [
@@ -62,7 +75,7 @@ const Navbar = ({ onOpenModal }) => {
             </span>
           </span>
 
-          <p className="text-[10px] font-bold uppercase tracking-[0.55em] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
+          <p className="text-[0.625rem] font-bold uppercase tracking-[0.55em] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
             One Lab<span className="-ml-[0.55em]">.</span> Infinite Possibilities<span className="-ml-[0.55em]">.</span>
           </p>
         </div>
@@ -84,7 +97,7 @@ const Navbar = ({ onOpenModal }) => {
                 to={link.target}
                 spy={true}
                 smooth={true}
-                offset={-80}
+                offset={-5 * remSize} // -80px at 16px rem, scales with font size
                 duration={500}
                 className="text-sm font-medium text-slate-300 hover:text-blue-400 cursor-pointer transition-colors"
               >
@@ -124,7 +137,7 @@ const Navbar = ({ onOpenModal }) => {
                   to={link.target}
                   spy={true}
                   smooth={true}
-                  offset={-70}
+                  offset={-4.375 * remSize} // -70px at 16px rem
                   duration={500}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-lg font-medium text-slate-300 hover:text-blue-400"
@@ -321,20 +334,33 @@ const ImageSlider = ({ customImages, aspectRatio = "aspect-[4/3]", showOverlay =
 
 const SpotlightCarousel = ({ images, speed = 5000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [remSize, setRemSize] = useState(16);
 
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
 
   useEffect(() => {
+    // Update rem size on mount and resize
+    const updateRem = () => {
+      const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      setRemSize(fontSize || 16);
+    };
+
+    updateRem();
+    window.addEventListener('resize', updateRem);
     const timer = setInterval(nextSlide, speed);
-    return () => clearInterval(timer);
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('resize', updateRem);
+    };
   }, [speed, images.length]);
 
   return (
     <div className="relative w-full py-4 sm:py-16 px-4 group">
 
       {/* Carousel Container */}
-      <div className="relative h-[220px] md:h-[420px] flex items-center justify-center">
+      <div className="relative h-[13.75rem] md:h-[26.25rem] flex items-center justify-center">
 
         {/* Left Button */}
         <button
@@ -365,12 +391,21 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
             // Don't render cards that are far off-screen to save resources
             if (Math.abs(offset) > 2) return null;
 
+            // Base values in REM (converted from pixels: 220/16=13.75, 420/16=26.25)
+            const baseMobile = 13.75;
+            const baseDesktop = 26.25;
+
+            // Calculate pixel value based on current font size
+            const translationDist = window.innerWidth < 768
+              ? baseMobile * remSize
+              : baseDesktop * remSize;
+
             return (
               <motion.div
                 key={idx}
                 initial={false}
                 animate={{
-                  x: offset * (window.innerWidth < 768 ? 220 : 420), // Position
+                  x: offset * translationDist, // Position uses dynamic scaling
                   scale: isActive ? 1.1 : 0.85, // Scale
                   opacity: isActive ? 1 : (isSide ? 0.6 : 0), // Opacity
                   zIndex: isActive ? 30 : 10,
@@ -381,7 +416,7 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
                   damping: 30,    // Higher damping = less wobble
                   mass: 0.8       // Lighter mass = faster movement
                 }}
-                className="absolute w-[260px] md:w-[500px] aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl cursor-pointer bg-slate-900 will-change-transform"
+                className="absolute w-[16.25rem] md:w-[31.25rem] aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl cursor-pointer bg-slate-900 will-change-transform"
                 onClick={() => {
                   if (offset === 1) nextSlide();
                   if (offset === -1) prevSlide();
@@ -429,8 +464,8 @@ const Hero = ({ onOpenModal }) => (
   // 1. INCREASED top padding (pt-32 -> pt-48) to create more space below the header
   <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-24 pb-8 sm:pt-32 sm:pb-20 relative overflow-hidden">
     {/* Glow Effects */}
-    <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[120px] pointer-events-none"></div>
-    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[120px] pointer-events-none"></div>
+    <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[7.5rem] pointer-events-none"></div>
+    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[7.5rem] pointer-events-none"></div>
 
     <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
 
@@ -684,7 +719,7 @@ const About = () => {
 const Statistics = () => (
 
   <section id="need" className="py-6 sm:py-12 -mt-24 relative z-20">
-    <br></br>
+
     <div className="container">
 
       <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
