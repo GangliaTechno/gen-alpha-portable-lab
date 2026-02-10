@@ -65,17 +65,17 @@ const Navbar = ({ onOpenModal }) => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#020617]/90 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#020617]/90 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-3 md:py-5'}`}>
       <div className="container flex items-center justify-between">
         <div className="flex flex-col cursor-pointer" onClick={() => scroll.scrollToTop()}>
-          <span className="text-2xl md:text-3xl font-bold tracking-tight leading-none">
+          <span className="text-xl md:text-3xl font-bold tracking-tight leading-none">
             <span className="text-white">Gen-Alpha</span>{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
               Portable Lab
             </span>
           </span>
 
-          <p className="text-[0.625rem] font-bold uppercase tracking-[0.55em] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
+          <p className="text-[0.45rem] md:text-[0.625rem] font-bold uppercase tracking-[0.55em] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
             One Lab<span className="-ml-[0.55em]">.</span> Infinite Possibilities<span className="-ml-[0.55em]">.</span>
           </p>
         </div>
@@ -462,12 +462,12 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
 
 const Hero = ({ onOpenModal }) => (
   // 1. INCREASED top padding (pt-32 -> pt-48) to create more space below the header
-  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-24 pb-8 sm:pt-32 sm:pb-20 relative overflow-hidden">
+  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-20 pb-8 sm:pt-32 sm:pb-20 relative overflow-hidden">
     {/* Glow Effects */}
     <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[7.5rem] pointer-events-none"></div>
     <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[7.5rem] pointer-events-none"></div>
 
-    <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+    <div className="container grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12">
 
       {/* Left Side: Text Content */}
       <motion.div
@@ -475,35 +475,35 @@ const Hero = ({ onOpenModal }) => (
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="flex flex-col justify-center"
+        className="flex flex-col justify-center text-left"
       >
         <div className="inline-block">
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
-            <span className="text-white">Gen-Alpha </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
+            <span className="text-white block sm:inline">Gen-Alpha </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 whitespace-nowrap">
               Portable Lab
             </span>
           </h1>
 
-          <p className="mt-1 mb-3 sm:mt-2 sm:mb-6 text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 tracking-[0.2em]">
+          <p className="mt-1 mb-2 sm:mt-2 sm:mb-6 text-xs sm:text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 tracking-[0.15em] sm:tracking-[0.2em] opacity-90">
             ONE LAB<span className="-ml-[0.2em]">.</span> INFINITE POSSIBILITIES<span className="-ml-[0.2em]">.</span>
           </p>
         </div>
 
-        <p className="mt-2 text-lg text-slate-400 mb-3 sm:mt-4 sm:mb-6 max-w-xl leading-relaxed">
+        <p className="mt-1 text-base sm:text-lg text-slate-400 mb-4 sm:mt-4 sm:mb-6 max-w-xl leading-relaxed">
           An all-in-one Electronics learning kit and portable lab for students from Class 6 to Engineering 2nd year.
           Students learn electronics, coding, and IoT by building real circuits.
         </p>
 
-        <div className="flex items-center gap-3 text-slate-500 text-sm font-medium mb-4 sm:mb-8">
-          <Package size={18} className="text-blue-500" />
+        <div className="flex items-center gap-2 sm:gap-3 text-slate-500 text-xs sm:text-sm font-medium mb-4 sm:mb-8">
+          <Package size={16} className="text-blue-500 shrink-0" />
           <span>Includes all required sensors, wires, and components.</span>
         </div>
 
         <div className="flex flex-wrap gap-2 sm:gap-4 mb-2">
           <button
             onClick={() => onOpenModal('demo')}
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-base transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2"
+            className="px-5 py-2.5 sm:px-6 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm sm:text-base transition-all shadow-lg shadow-blue-900/20 flex items-center gap-2"
           >
             Get In Touch <ChevronRight size={16} />
           </button>
@@ -719,7 +719,7 @@ const About = () => {
 const Statistics = () => (
 
   <section id="need" className="py-6 sm:py-12 -mt-24 relative z-20">
-
+    <br></br>
     <div className="container">
 
       <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
