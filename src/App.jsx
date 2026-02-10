@@ -357,7 +357,8 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
   }, [speed, images.length]);
 
   return (
-    <div className="relative w-full py-4 sm:py-16 px-4 group">
+    // Reduced padding: py-4 sm:py-16 -> py-2 sm:py-8
+    <div className="relative w-full py-2 sm:py-8 px-4 group">
 
       {/* Carousel Container */}
       <div className="relative h-[13.75rem] md:h-[26.25rem] flex items-center justify-center">
@@ -462,7 +463,8 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
 
 const Hero = ({ onOpenModal }) => (
   // 1. INCREASED top padding (pt-32 -> pt-48) to create more space below the header
-  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-20 pb-8 sm:pt-32 sm:pb-20 relative overflow-hidden">
+  // Reduced bottom padding (pb-8 sm:pb-20 -> pb-4 sm:pb-12)
+  <section id="hero" className="min-h-[100vh] flex flex-col justify-center pt-20 pb-4 sm:pt-32 sm:pb-12 relative overflow-hidden">
     {/* Glow Effects */}
     <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 blur-[7.5rem] pointer-events-none"></div>
     <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 blur-[7.5rem] pointer-events-none"></div>
@@ -554,9 +556,10 @@ const About = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section id="about" className="py-6 sm:py-12 bg-slate-900/30 mt-6 sm:mt-20">
+    // Reduced mt-6 sm:mt-20 to mt-0 sm:mt-8, py-6 sm:py-12 to py-4 sm:py-8
+    <section id="about" className="py-4 sm:py-8 bg-slate-900/30 mt-0 sm:mt-8">
       <div className="container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="section-title">Overview</h2>
           <p className="text-slate-400">
             Gen-Alpha Portable Lab combines hardware, software, learning content, and accessories into one portable unit, removing the need for a traditional electronics lab setup.
@@ -573,7 +576,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* LEFT SIDE: Static List of 4 Cards */}
           <div className="space-y-2">
 
@@ -717,16 +720,15 @@ const About = () => {
 };
 
 const Statistics = () => (
-
-  <section id="need" className="py-6 sm:py-12 -mt-24 relative z-20">
-    <br></br>
+  // Reduced vertical padding (py-6 sm:py-12 -> py-4 sm:py-8) and pulled up with -mt-24 (was roughly correct, but checking layout flow)
+  <section id="need" className="py-4 sm:py-8 mt-0 md:-mt-24 relative z-20">
     <div className="container">
 
-      <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12">
         <h2 className="section-title">Problems with current system?</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8 sm:mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-6 sm:mb-12">
         {/* Card 1 */}
         <div className="glass-card text-center p-6 border-b-4 border-b-red-600/50">
           <div className="text-4xl font-black text-red-500 mb-3">
@@ -763,7 +765,7 @@ const Statistics = () => (
           <p className="text-sm text-slate-400">Most schools lack the space for dedicated high-end electronics labs.</p>
         </div>
       </div>
-      <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12">
         <p className="text-xl text-slate-400 leading-relaxed">
           Most students learn electronics through theory and diagrams. Hands-on exposure remains limited due to lack of lab infrastructure.
         </p>
@@ -781,7 +783,8 @@ const Statistics = () => (
 );
 
 const TargetUsers = () => (
-  <section id="users" className="py-6 sm:py-12 bg-slate-900/20">
+  // Reduced py-6 sm:py-12 to py-4 sm:py-8
+  <section id="users" className="py-4 sm:py-8 bg-slate-900/20">
     <div className="container">
       <h2 className="section-title">Who the Gen-Alpha Portable Lab Is Designed For?</h2>
 
@@ -964,7 +967,7 @@ const Features = () => {
   const visibleFaqs = showAll ? faqData : faqData.slice(0, 5);
 
   return (
-    <section id="features" className="py-6 sm:py-12">
+    <section id="features" className="py-4 sm:py-8">
       <div className="container">
         <h2 className="section-title">FAQs</h2>
 
