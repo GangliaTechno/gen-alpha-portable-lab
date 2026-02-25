@@ -366,17 +366,31 @@ const SpotlightCarousel = ({ images, speed = 5000 }) => {
         {/* Left Button */}
         <button
           onClick={prevSlide}
-          className="absolute left-0 md:left-10 z-50 p-3 bg-slate-900/50 hover:bg-blue-600 text-white rounded-full backdrop-blur-md transition-all border border-slate-700 hover:border-blue-500 shadow-lg active:scale-90"
+          className="
+    absolute left-0 md:left-10 z-50
+    p-2 text-white bg-transparent
+    transition-all duration-300 ease-out
+    hover:scale-110
+    hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]
+    active:scale-95
+  "
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={26} />
         </button>
 
         {/* Right Button */}
         <button
           onClick={nextSlide}
-          className="absolute right-0 md:right-10 z-50 p-3 bg-slate-900/50 hover:bg-blue-600 text-white rounded-full backdrop-blur-md transition-all border border-slate-700 hover:border-blue-500 shadow-lg active:scale-90"
+          className="
+    absolute right-0 md:right-10 z-50
+    p-2 text-white bg-transparent
+    transition-all duration-300 ease-out
+    hover:scale-110
+    hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]
+    active:scale-95
+  "
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={26} />
         </button>
 
         <div className="relative w-full h-full flex items-center justify-center perspective-1000">
@@ -534,7 +548,7 @@ const Hero = ({ onOpenModal }) => (
 
     {/* Horizontal Strip */}
     {/* 2. REDUCED top margin (mt-20 -> mt-8) to pull slider closer to the hero section */}
-    <div className="container -mt-32 relative z-10">
+    <div className="container relative z-10 mt-8 sm:mt-12">
       <div className="w-full mx-auto">
         <SpotlightCarousel
           speed={4000}
